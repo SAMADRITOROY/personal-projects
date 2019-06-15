@@ -2,8 +2,8 @@ package com.otirdamas.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.otirdamas.exceptions.CreationException;
@@ -16,14 +16,14 @@ public class SignUpController {
 	@Autowired
 	private UserService userServ;
 	
-	@RequestMapping(path = "signup", method = RequestMethod.GET)
+	@GetMapping(path = "signup")
 	ModelAndView fetchSignUpPage() {
 		ModelAndView mv = new ModelAndView("signup");
 		mv.addObject("user", new User());
 		return mv;
 	}
 	
-	@RequestMapping(path = "signup", method = RequestMethod.POST)
+	@PostMapping(path = "signup")
 	ModelAndView createUser(User userForCreation) {
 		ModelAndView mv = new ModelAndView();
 		try {
