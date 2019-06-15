@@ -1,0 +1,1 @@
+INSERT INTO USER VALUES ('samadrito.roy', 'samadrito.roy@gmail.com', 'Samadrito', 'Roy', 'Welcome1')
