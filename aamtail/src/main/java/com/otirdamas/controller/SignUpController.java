@@ -1,42 +1,45 @@
 package com.otirdamas.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.otirdamas.exceptions.CreationException;
 import com.otirdamas.model.User;
 import com.otirdamas.service.UserService;
 
 @Controller
+@SessionAttributes("user")
 public class SignUpController {
 
 	@Autowired
 	private UserService userServ;
 	
 	@GetMapping(path = "signup")
-	ModelAndView fetchSignUpPage() {
-		ModelAndView mv = new ModelAndView("signup");
-		mv.addObject("user", new User());
-		return mv;
+	public String fetchSignUpPage(Model model, HttpSession session) {
+		session.invalidate();
+		model.addAttribute("user", new User());
+		return "signup";
 	}
 	
 	@PostMapping(path = "signup")
-	ModelAndView createUser(User userForCreation) {
-		ModelAndView mv = new ModelAndView();
+	public String createUser(@ModelAttribute("user") User user, 
+			Model model) {
 		try {
-			User createdUser = userServ.createUser(userForCreation);
-			mv.setViewName("home");
-			mv.addObject("user", createdUser);
+			user = userServ.createUser(user);
+			model.addAttribute("user", user);
+			return "redirect:/";
 		}catch(CreationException ce) {
 			ce.printStackTrace();
-			mv.setViewName("signup");
-			mv.addObject("user", userForCreation);
-			mv.addObject("errorString", ce.getMessage());
+			model.addAttribute("errorString", ce.getMessage());
+			return "signup";
 		}
-		return mv;
 	}
 	
 }

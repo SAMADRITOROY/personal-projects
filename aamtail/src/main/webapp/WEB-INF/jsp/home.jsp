@@ -14,7 +14,7 @@
 				<a href="/login">login</a> | <a href="/signup">sign-up</a>
 			</c:when>
 			<c:otherwise>
-				Welcome ${user.firstName} ${user.lastName}
+				Welcome ${user.firstName} ${user.lastName} | <a href="/logout">Logout</a> 
 			</c:otherwise>
 		</c:choose>
 	</body>
