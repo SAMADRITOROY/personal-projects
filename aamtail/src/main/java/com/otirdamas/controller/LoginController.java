@@ -1,7 +1,5 @@
 package com.otirdamas.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +24,7 @@ public class LoginController {
 	}
 	
 	@PostMapping(path="login")
-	public ModelAndView performLogin(User userForAuth, HttpServletRequest request) {
+	public ModelAndView performLogin(User userForAuth) {
 		ModelAndView mv = new ModelAndView();
 		try {
 			User retrievedUser = userServ.authenticate(userForAuth);
