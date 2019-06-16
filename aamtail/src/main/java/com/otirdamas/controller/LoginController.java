@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -29,7 +28,7 @@ public class LoginController {
 	}
 	
 	@PostMapping(path="login")
-	public String performLogin(@ModelAttribute("user") User user,
+	public String performLogin(User user,
 			Model model) {
 		try {
 			model.addAttribute("user", userServ.authenticate(user));

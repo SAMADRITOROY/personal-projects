@@ -20,25 +20,30 @@
 					<tr>
 						<td>Username:</td>
 						<td><form:input path="username" /></td>
+						<td><form:errors path="username"/></td>
 					</tr>
 					<tr>
 						<td>Password:</td>
 						<td><form:password path="password" /></td>
+						<td><form:errors path="password"/></td>
 					</tr>
 					<tr>
 						<td>First Name:</td>
 						<td><form:input path="firstName" /></td>
+						<td><form:errors path="firstName"/></td>
 					</tr>
 					<tr>
 						<td>Last Name:</td>
 						<td><form:input path="lastName" /></td>
+						<td><form:errors path="lastName"/></td>
 					</tr>
 					<tr>
 						<td>Email Id:</td>
 						<td><form:input path="emailId" /></td>
+						<td><form:errors path="emailId"/></td>
 					</tr>
 					<tr>
-						<td colspan="2">
+						<td colspan="3">
 							<input type="submit" value="Submit">
 						</td>
 					</tr>

@@ -2,15 +2,21 @@ package com.otirdamas.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class User {
 	
+	@NotBlank
 	private String firstName;
+	@NotBlank
 	private String lastName;
 	@Id
+	@NotBlank
 	private String username;
+	@NotBlank
 	private String password;
+	@NotBlank
 	private String emailId;
 	
 	public User() {
