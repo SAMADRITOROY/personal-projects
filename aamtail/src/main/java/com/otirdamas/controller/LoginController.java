@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -21,17 +22,21 @@ public class LoginController {
 	private UserService userServ;
 
 	@GetMapping(path="login")
-	public String fetchLoginPage(Model model, HttpSession session) {
-		session.invalidate();
-		model.addAttribute("user", new User());
+	public String fetchLoginPage(Model model) {
+		model.addAttribute("loginUser", new User());
 		return "login";
 	}
 	
 	@PostMapping(path="login")
-	public String performLogin(User user,
-			Model model) {
+	public String performLogin(
+			@ModelAttribute("loginUser")
+			User user,
+			Model model,
+			HttpSession session) {
 		try {
-			model.addAttribute("user", userServ.authenticate(user));
+			user = userServ.authenticate(user);
+			session.invalidate();
+			model.addAttribute("user", user);
 			return "redirect:/";
 		}catch(AuthenticationException authEx) {
 			authEx.printStackTrace();

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -23,22 +24,24 @@ public class SignUpController {
 	private UserService userServ;
 	
 	@GetMapping(path = "signup")
-	public String fetchSignUpPage(Model model, HttpSession session) {
-		session.invalidate();
-		model.addAttribute("user", new User());
+	public String fetchSignUpPage(Model model) {
+		model.addAttribute("signupUser", new User());
 		return "signup";
 	}
 	
 	@PostMapping(path = "signup")
 	public String createUser(
+			@ModelAttribute("signupUser")
 			@Valid User user,
 			BindingResult bindingResult,
-			Model model) {
+			Model model,
+			HttpSession session) {
 		if(bindingResult.hasErrors()) {
 			return "signup";
 		}
 		try {
 			user = userServ.createUser(user);
+			session.invalidate();
 			model.addAttribute("user", user);
 			return "redirect:/";
 		}catch(CreationException ce) {

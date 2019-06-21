@@ -10,7 +10,7 @@ import com.otirdamas.exceptions.CreationException;
 import com.otirdamas.model.User;
 import com.otirdamas.repo.UserRepository;
 
-@Service("authenticationService")
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
 	@Autowired
