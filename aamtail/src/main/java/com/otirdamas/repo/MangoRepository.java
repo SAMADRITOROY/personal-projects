@@ -7,8 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.otirdamas.model.Mango;
 @Repository("mangoRepository")
-public interface MangoRepository extends CrudRepository<Mango, String>{
+public interface MangoRepository extends CrudRepository<Mango, Long>{
 	
 	List<Mango> findAll();
+	Mango findByName(String name);
 	
 }

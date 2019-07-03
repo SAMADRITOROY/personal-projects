@@ -5,5 +5,6 @@ import java.util.List;
 import com.otirdamas.model.Mango;
 
 public interface MangoService {
-	public List<Mango> findAllMangoes();
+	List<Mango> findAllMangoes();
+	Mango findMangoByName(String mangoName); 
 }

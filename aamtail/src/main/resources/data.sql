@@ -1,3 +1,3 @@
-INSERT INTO USER VALUES ('samadrito.roy', 'samadrito.roy@gmail.com', 'Samadrito', 'Roy', 'Welcome1');
+INSERT INTO USER (ID, FIRSTNAME, LASTNAME, USERNAME, PASSWORD, EMAILID) VALUES (1, 'Samadrito', 'Roy', 'samadrito.roy', 'Welcome1', 'samadrito.roy@gmail.com');
 
-INSERT INTO MANGO (name, region, price) VALUES ('Alphonso', 'Maharashtra', 275.00), ('Banganpalli', 'Andhra Pradesh', 85), ('Himsagar', 'West Bengal',  40), ('Totapuri', 'Karnataka', 30), ('Langra', 'Uttar Pradesh', 139);
+INSERT INTO MANGO (ID, NAME, REGION, PRICE) VALUES (1, 'Alphonso', 'Maharashtra', 275.00), (2, 'Banganpalli', 'Andhra Pradesh', 85), (3, 'Himsagar', 'West Bengal',  40), (4, 'Totapuri', 'Karnataka', 30), (5, 'Langra', 'Uttar Pradesh', 139);

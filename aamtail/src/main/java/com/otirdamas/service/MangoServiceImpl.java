@@ -19,4 +19,9 @@ public class MangoServiceImpl implements MangoService {
 		return mangoRepo.findAll();
 	}
 
+	@Override
+	public Mango findMangoByName(String mangoName) {
+		return mangoRepo.findByName(mangoName);
+	}
+	
 }

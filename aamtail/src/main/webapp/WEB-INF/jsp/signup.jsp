@@ -15,7 +15,7 @@
 					${errorString}
 				</c:when>
 			</c:choose>
-			<form:form action="signup" modelAttribute="signupUser">
+			<form:form action="/signup" modelAttribute="signupUser">
 				<table>
 					<tr>
 						<td>Username:</td>

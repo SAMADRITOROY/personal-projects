@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User authenticate(User userForAuth) throws AuthenticationException {
-		if(!userRepo.existsById(userForAuth.getUsername())) {
+		if(!userRepo.existsByUsername(userForAuth.getUsername())) {
 			throw new AuthenticationException("No such username exists");
 		}
 		List<User> users = userRepo.findByUsername(userForAuth.getUsername());
@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User createUser(User userForCreation) throws CreationException {
-		if(userRepo.existsById(userForCreation.getUsername())) {
+		if(userRepo.existsByUsername(userForCreation.getUsername())) {
 			throw new CreationException("Username is already taken");
 		}
 		User createdUser = userRepo.save(userForCreation);

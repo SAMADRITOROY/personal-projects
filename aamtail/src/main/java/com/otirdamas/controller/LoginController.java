@@ -21,16 +21,15 @@ public class LoginController {
 	@Autowired
 	private UserService userServ;
 
-	@GetMapping(path="login")
+	@GetMapping(path="/login")
 	public String fetchLoginPage(Model model) {
 		model.addAttribute("loginUser", new User());
 		return "login";
 	}
 	
-	@PostMapping(path="login")
+	@PostMapping(path="/login")
 	public String performLogin(
-			@ModelAttribute("loginUser")
-			User user,
+			@ModelAttribute("loginUser") User user,
 			Model model,
 			HttpSession session) {
 		try {

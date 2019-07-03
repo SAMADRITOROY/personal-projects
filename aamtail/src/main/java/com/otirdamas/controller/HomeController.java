@@ -13,7 +13,7 @@ public class HomeController {
 	@Autowired
 	private MangoService mangoServ;
 	
-	@GetMapping(path="")
+	@GetMapping(path="/")
 	public String fetchHomePage(Model model) {
 		model.addAttribute("mangoList", mangoServ.findAllMangoes());
 		return "home";

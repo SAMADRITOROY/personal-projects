@@ -23,16 +23,15 @@ public class SignUpController {
 	@Autowired
 	private UserService userServ;
 	
-	@GetMapping(path = "signup")
+	@GetMapping(path="/signup")
 	public String fetchSignUpPage(Model model) {
 		model.addAttribute("signupUser", new User());
 		return "signup";
 	}
 	
-	@PostMapping(path = "signup")
+	@PostMapping(path="/signup")
 	public String createUser(
-			@ModelAttribute("signupUser")
-			@Valid User user,
+			@ModelAttribute("signupUser") @Valid User user,
 			BindingResult bindingResult,
 			Model model,
 			HttpSession session) {
