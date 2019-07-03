@@ -9,6 +9,9 @@
 		<title>Login to aamtail</title>
 	</head>
 	<body>
+		<div align="right">
+			<a href="/">Home</a>
+		</div>
 		<h1>Login</h1>
 			<c:choose>
 				<c:when test="${!empty errorString}">

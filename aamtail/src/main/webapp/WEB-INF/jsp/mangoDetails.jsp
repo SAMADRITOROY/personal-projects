@@ -13,7 +13,7 @@
 		</div>
 		<h1>${mango.name}</h1>
 		<h2>From: ${mango.region}</h2>
-		<form:form action="/addToCart" modelAttribute="orderItem">
+		<form:form action="${mango.name}/addToCart" modelAttribute="orderItem">
 			<table border="1">
 				<tr>
 					<th>Price/kg</th>

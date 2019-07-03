@@ -42,7 +42,9 @@
 					</tr>
 					<tr>
 						<td colspan="4">
-							<a href="/buyCart">BuyNow</a>
+							<form action="/cart/buyCart" method="post">
+								<input type="submit" value="Buy Now">
+							</form>
 						</td>
 					</tr>
 				</table>
